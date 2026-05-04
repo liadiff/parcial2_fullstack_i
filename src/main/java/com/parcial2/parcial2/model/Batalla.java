@@ -23,4 +23,5 @@ public class Batalla {
     @NotBlank(message = "El estado de la batalla no puede estar vacio!!")
     private String estado;
 
+    private Arena arena;
 }

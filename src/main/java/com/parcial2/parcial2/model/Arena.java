@@ -22,12 +22,12 @@ public class Arena {
     private Integer id;
 
     @NotNull(message = "El multiplicador de daño no puede estar vacio!!")
-    private Double multiplicadorDeVelocidad;
+    private Float multiplicadorDeVelocidad;
 
     @NotBlank(message = "El nombre de la arena no puede estar vacio!!")
     private String nombre;
 
     @NotNull(message = "El multiplicador de HP no puede estar vacio!!")
-    private Double multiplicadorDeHP;
+    private Float multiplicadorDeHP;
 
 }

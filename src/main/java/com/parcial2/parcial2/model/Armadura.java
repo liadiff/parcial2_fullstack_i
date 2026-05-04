@@ -21,13 +21,14 @@ public class Armadura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull(message = "La durabilidad de la armadura no puede ser nula!!")
-    private Double durabilidad;
-
     @NotBlank(message = "El nombre de la armadura no puede estar vacio!!")
     private String nombre;
 
-    @NotBlank(message = "El tipo de armadura no puede estar vacio!!")
-    private String tipoArmadura;
+    @NotNull(message = "El hp de la armadura no puede ser nulo!!")
+    private Float hp;
+
+    @NotNull(message = "La proteccion de la armadura no puede ser nula!!")
+    private Float proteccion;
     
 }
+

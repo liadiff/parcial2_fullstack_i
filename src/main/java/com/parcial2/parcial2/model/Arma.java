@@ -27,14 +27,15 @@ public class Arma {
     @NotBlank(message ="El nombre del arma no puede estar vacio!!")
     private String nombre;
 
+    //FK TIPO ARMA
     @NotBlank(message = "El tipo de arma no puede estar vacio!!")
-    private  String tipoArma;
+    private  TipoArma tipoArma;
 
     @NotNull(message = "El daño del arma no pude ser nulo!!")
-    private Double  daño;
+    private Float daño;
 
     @NotNull(message = "La velocidad del arma no pude ser nula!!")
-    private Double  VelocidadArma;
+    private Float VelocidadArma;
 
 
 
