@@ -1,10 +1,11 @@
 package com.parcial2.parcial2.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -16,24 +17,33 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Armadura {
+@Entity 
+@Table(name = "jugadores")
+public class Jugador {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @NotBlank(message = "El nombre de la armadura no puede estar vacio!!")
-    @Column(name = "nombre", nullable = false, length = 50)
+    @NotBlank(message = "El nombre del jugador no puede estar vacio!!")
     private String nombre;
 
-    @NotNull(message = "El hp de la armadura no puede ser nulo!!")
-    @Column(name= "hp", nullable = false , length = 50)
-    private Float hp;
+    @NotBlank(message = "La clase deljugador no puede estar vacia")
+    private String clase;
 
-    @NotNull(message = "La proteccion de la armadura no puede ser nula!!")
-    @Column(name = "proteccion", nullable = false, length = 50)
-    private Float proteccion;
+    @NotNull(message = "El nivel del jugador debe ser minimo 1 ")
+    private Integer nivel;
     
-}
+    @OneToMany
+    private Partida partida;
+    
 
+    @OneToMany
+    private Arma arma;
+    
+    
+
+
+
+
+}
