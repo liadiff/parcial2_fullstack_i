@@ -28,8 +28,11 @@ public class ArmaService {
     */
 
     //Agregar
-
+    
     public Arma agregarArma(Arma arma){
+        if(armaRepository.existsByNombre(arma.getNombre())){
+            throw new RuntimeException("Esa arma ya existe en la base de datos");
+        }
         return armaRepository.save(arma);
     }
 
