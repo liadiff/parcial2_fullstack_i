@@ -1,6 +1,8 @@
 package com.parcial2.parcial2.model;
 
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,12 +24,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "Armas")
+
 public class Arma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "arma_id")
     private Integer id;
 
     @NotBlank(message ="El nombre del arma no puede estar vacio!!")
+    @Column (name = "nombre", unique = true)
     private String nombre;
 
     @ManyToOne
@@ -36,6 +41,7 @@ public class Arma {
     private  TipoArma tipoArma;
 
     @NotNull(message = "El daño del arma no pude ser nulo!!")
+    @Column (name = "daño")
     private Float daño;
 
     @NotNull(message = "La velocidad del arma no pude ser nula!!")
