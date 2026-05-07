@@ -6,9 +6,12 @@ import org.springframework.stereotype.Service;
 import com.parcial2.parcial2.model.Arena;
 import com.parcial2.parcial2.repository.ArenaRepository;
 
+import jakarta.transaction.Transactional;
+
 import java.util.List;
 
 @Service
+@Transactional
 public class ArenaService {
 
     @Autowired

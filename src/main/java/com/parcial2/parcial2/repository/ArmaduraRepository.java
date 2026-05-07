@@ -9,9 +9,4 @@ import com.parcial2.parcial2.model.Armadura;
 @Repository
 public interface ArmaduraRepository  extends JpaRepository<Armadura, Integer> {
 
-    List<Armadura> findByNombre(String nombre);
-
-    List<Armadura> getByHp(Float hp);
-
-    List<Armadura> getByProteccion(Float proteccion);
 }

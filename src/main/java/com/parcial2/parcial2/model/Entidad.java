@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -22,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "entidades")
 public class Entidad {
     
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -32,21 +34,23 @@ public class Entidad {
 
     @NotNull(message = "El nivel del jugador debe ser minimo 1 ")
     @Column(name = "nivel", nullable = false)
-    private Integer nivel;
 
     private Boolean jugable; //True = jugador - False = npc
     
     //FK
-    @OneToMany
+    @ManyToOne
+    @JoinColumn (name = "tipo_arma_id")
     private Arma arma;
     //FK
-    @OneToMany
+    @ManyToOne
+    @JoinColumn (name = "raza_id")
     private  Raza raza;
     //FK
-    @NotBlank(message = "La clase deljugador no puede estar vacia")
-    @OneToMany
+    @ManyToOne
+    @JoinColumn (name = "clase_id")
     private Clase clase;
     //FK
-    @OneToMany
+    @ManyToOne
+    @JoinColumn (name = "armadura_id")
     private Armadura armadura;
 }

@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import com.parcial2.parcial2.model.Batalla;
 import com.parcial2.parcial2.repository.BatallaRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class BatallaService {
     
     @Autowired

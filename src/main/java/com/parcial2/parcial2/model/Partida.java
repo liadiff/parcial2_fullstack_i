@@ -26,8 +26,11 @@ public class Partida {
     @Column(name = "partida_id")
     private Integer id;
 
-    @OneToOne
+    @ManyToOne
     private Entidad jugador;
+
+    @ManyToOne
+    private Batalla batalla;
 
     @OneToOne
     private Entidad enemigo;

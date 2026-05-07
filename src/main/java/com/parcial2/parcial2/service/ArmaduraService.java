@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import com.parcial2.parcial2.model.Armadura;
 import com.parcial2.parcial2.repository.ArmaduraRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class ArmaduraService {
     @Autowired
     private ArmaduraRepository armaduraRepository;

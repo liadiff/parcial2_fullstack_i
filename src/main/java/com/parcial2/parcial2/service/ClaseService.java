@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import com.parcial2.parcial2.model.Clase;
 import com.parcial2.parcial2.repository.ClaseRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class ClaseService {
     @Autowired
     private ClaseRepository claseRepository;

@@ -30,6 +30,6 @@ public class Batalla {
     @Column(nullable = false)
     private Boolean finalizado;
 
-    @OneToOne
+    @ManyToOne
     private Arena arena;
 }

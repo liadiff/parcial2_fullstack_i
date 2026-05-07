@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import com.parcial2.parcial2.model.Partida;
 import com.parcial2.parcial2.repository.PartidaRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class PartidaService {
     
     @Autowired
