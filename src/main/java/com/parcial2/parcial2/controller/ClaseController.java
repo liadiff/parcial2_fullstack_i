@@ -24,7 +24,7 @@ public class ClaseController {
         Clase c = new Clase();
         c.setNombre(dto.getNombre());
         c.setDescripcion(dto.getDescripcion());
-        c.setMultDano(dto.getMultDano());
+        c.setMult_dano(dto.getMultDano());
         return claseService.guardar(c);
     }
 }

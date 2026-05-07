@@ -23,7 +23,7 @@ public class ArmaduraController {
     public Armadura guardar(@RequestBody ArmaduraDTO dto) {
         Armadura a = new Armadura();
         a.setNombre(dto.getNombre());
-        a.setHp(dto.getHp());
+        a.setHp(dto.getPuntosVida());
         a.setProteccion(dto.getProteccion());
         return armaduraService.guardar(a);
     }
