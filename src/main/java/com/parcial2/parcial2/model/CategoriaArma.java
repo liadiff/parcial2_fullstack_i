@@ -2,6 +2,8 @@ package com.parcial2.parcial2.model;
 
 import java.util.List;
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,10 +26,11 @@ import lombok.NoArgsConstructor;
 public class CategoriaArma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "categoria_arma_id")
     private Integer id;
     
     @NotBlank(message = "El nombre de la categoria no puede estar vacio!!")
-    @Column(nullable = false, length =  100)
+    @Column(nullable = false, length =  100, unique = true)
     private String nombre;
 
     @OneToMany(mappedBy = "categoriaArma")
