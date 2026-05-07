@@ -35,5 +35,5 @@ public class Armadura {
     @Column(name = "proteccion", nullable = false, length = 50)
     private Float proteccion;
     
+    private String hola;
 }
-
