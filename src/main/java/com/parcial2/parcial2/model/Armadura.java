@@ -34,6 +34,5 @@ public class Armadura {
     @NotNull(message = "La proteccion de la armadura no puede ser nula!!")
     @Column(name = "proteccion", nullable = false, length = 50)
     private Float proteccion;
-    
-    private String hola;
+
 }
