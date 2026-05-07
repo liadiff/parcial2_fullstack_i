@@ -1,0 +1,85 @@
+package com.parcial2.parcial2.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.parcial2.parcial2.model.Arma;
+import com.parcial2.parcial2.repository.ArmaRepository;
+
+import jakarta.transaction.Transactional;
+
+@Service
+@Transactional
+public class ArmaService {
+
+    //Repositorios
+
+    @Autowired
+    private ArmaRepository armaRepository;
+
+    /*
+    @Autowired
+    private CategoriaArmaRepository categoriaArmaRepository;
+
+    @Autowired
+    private TipoArmaRepository tipoArmaRepository;
+    */
+
+    //Agregar
+
+    public Arma agregarArma(Arma arma){
+        return armaRepository.save(arma);
+    }
+
+    //Eliminar
+
+    public String eliminarArma (Integer id){
+       Arma armaEncontrada = armaRepository.findById(id).orElseThrow(() -> new RuntimeException("El arma con ID " + id + " no existe"));
+       armaRepository.delete(armaEncontrada);
+
+       return armaEncontrada.getNombre() + "ha sido eliminada exitosamente";
+    }
+
+    //Modificar
+
+    public Arma modificarArma (Arma armaNueva, Integer id){
+        Arma armaEncontrada = armaRepository.findById(id).orElseThrow(() -> new RuntimeException("El arma con ID " + id + " no existe"));
+        armaEncontrada.setDaño(armaNueva.getDaño());
+        armaEncontrada.setNombre(armaNueva.getNombre());
+        armaEncontrada.setVelocidadArma(armaNueva.getVelocidadArma());
+        armaEncontrada.setTipoArma(armaNueva.getTipoArma());
+        armaRepository.save(armaEncontrada);
+        return armaEncontrada;
+    }
+
+    //Buscar
+
+    public Arma encontrarArma (Integer id){
+        Arma armaEncontrada = armaRepository.findById(id).orElseThrow(() -> new RuntimeException("El arma con ID " + id + " no existe"));
+        return armaEncontrada;
+    }
+    //Mostrar todos
+
+    public List<Arma> mostrarTodas(){
+        List<Arma> listaDeArmas = armaRepository.findAll();
+        return listaDeArmas;
+    }
+ 
+
+    //Verificaciones
+
+    //Asignar arma
+    /*
+    Aca debería ir el asignar arma. Lo vamos a usar para asiganr y eliminar
+    */
+
+    /* 
+    No se me ocurre que 
+    */
+
+    
+
+    
+}
