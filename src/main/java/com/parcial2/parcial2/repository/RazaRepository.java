@@ -1,7 +1,5 @@
 package com.parcial2.parcial2.repository;
 
-import java.util.List;
-
 import org.springframework.stereotype.Repository;
 
 import com.parcial2.parcial2.model.Raza;

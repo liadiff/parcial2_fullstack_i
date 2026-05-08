@@ -1,7 +1,5 @@
 package com.parcial2.parcial2.model;
 
-import org.springframework.boot.context.properties.bind.Name;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
