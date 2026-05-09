@@ -7,5 +7,6 @@ import com.parcial2.parcial2.model.CategoriaArma;
 @Repository
 public interface CategoriaArmaRepository extends JpaRepository <CategoriaArma, Integer>{
 
+    Boolean existsByNombre (String nombre);
     
 }

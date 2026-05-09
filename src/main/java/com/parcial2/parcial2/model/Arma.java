@@ -49,7 +49,7 @@ public class Arma {
 
     @NotNull(message = "La velocidad del arma no pude ser nula!!")
     @Column (name = "velocidad_arma")
-    private Float VelocidadArma;
+    private Float velocidadArma;
 
     @OneToMany (mappedBy = "arma")
     private List<Entidad> listaEntidades;
