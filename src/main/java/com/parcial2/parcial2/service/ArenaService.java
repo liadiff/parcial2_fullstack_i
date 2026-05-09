@@ -81,7 +81,7 @@ public class ArenaService {
 
         return convertirDTO(arenaRepository.save(arena_original));
     }
-
+    
     private ArenaDTO convertirDTO(Arena arena) {
         ArenaDTO arenaDTO = new ArenaDTO();
         arenaDTO.setId(arena.getId());

@@ -31,5 +31,6 @@ public class Batalla {
     private Boolean finalizado;
 
     @ManyToOne
+    @Column(nullable = false)
     private Arena arena;
 }
