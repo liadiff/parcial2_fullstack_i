@@ -54,6 +54,25 @@ public class PartidaService {
         return "Partida " + id + " eliminada exitosamente";    
     }
 
+    public PartidaDTO actualizarPartida(Integer id, Partida partida) {
+        Partida partida_original = partidaRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("No se ha podido actualizar la partida: Partida " + id + " actualizada"));
+        
+        if (partida.getJugador() != null) {
+            partida_original.setJugador(partida.getJugador());
+        }
+        
+        if (partida.getEnemigo() != null) {
+            partida_original.setEnemigo(partida.getEnemigo());
+        }
+        
+        if (partida.getBatalla() != null) {
+            partida_original.setBatalla(partida.getBatalla());
+        }
+        
+        return convertirDTO(partidaRepository.save(partida_original));
+    }
+
     public Entidad obtenerJugador(Integer id) {
         Partida partida = partidaRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("No se ha podido obtener el jugador de la partida: Partida " + id + " inexistente"));

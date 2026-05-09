@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,7 +40,7 @@ public class PartidaController {
         return new ResponseEntity<>(partidas, HttpStatus.OK);
     }
 
-    @GetMapping("/{?}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Integer id) {
         try {
             PartidaDTO partidaDTO = partidaService.buscarPorId(id);
@@ -72,7 +73,18 @@ public class PartidaController {
         }
     }
 
-    @GetMapping("/{?}/jugador")
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> actualizarPartida(@PathVariable Integer id, @Valid @RequestBody Partida partida) {
+        try {
+            PartidaDTO partida_actualizada = partidaService.actualizarPartida(id, partida);
+            return new ResponseEntity<>(partida_actualizada, HttpStatus.OK);
+        
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/{id}/jugador")
     public ResponseEntity<?> obtenerJugador(@PathVariable Integer id) {
         try {
             Entidad entidad = partidaService.obtenerJugador(id);
@@ -83,7 +95,7 @@ public class PartidaController {
         }
     }
 
-    @GetMapping("/{?}/enemigo")
+    @GetMapping("/{id}/enemigo")
     public ResponseEntity<?> obtenerEnemigo(@PathVariable Integer id) {
         try {
             Entidad entidad = partidaService.obtenerEnemigo(id);
@@ -93,5 +105,5 @@ public class PartidaController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-    
+
 }
