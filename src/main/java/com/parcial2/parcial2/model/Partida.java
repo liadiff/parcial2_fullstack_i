@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -28,11 +29,14 @@ public class Partida {
     private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "jugador_id")
     private Entidad jugador;
 
     @ManyToOne
+    @JoinColumn(name = "batalla_id")
     private Batalla batalla;
 
     @OneToOne
+    @JoinColumn(name = "batalla_id")
     private Entidad enemigo;
 }
