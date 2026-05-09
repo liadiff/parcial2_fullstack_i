@@ -38,16 +38,11 @@ public class BatallaService {
     }
 
     public String eliminarBatalla(Integer id) {
-        try {
-            Batalla batalla = batallaRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("No se ha podido eliminar la batalla: Batalla " + id + " inexistente"));
+        Batalla batalla = batallaRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("No se ha podido eliminar la batalla: Batalla " + id + " inexistente"));
             
-            batallaRepository.delete(batalla);
-            return "Batalla " + id + " eliminada exitosamente";
-
-        } catch (RuntimeException e) {
-            return e.getMessage();
-        }
+        batallaRepository.delete(batalla);
+        return "Batalla " + id + " eliminada exitosamente";
     }
 
     public Boolean obtenerFinalizado(Integer id) {

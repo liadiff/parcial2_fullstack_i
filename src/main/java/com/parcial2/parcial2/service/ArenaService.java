@@ -37,16 +37,11 @@ public class ArenaService {
     }
 
     public String eliminarArena(Integer id) {
-        try {
-            Arena arena = arenaRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("No se ha podido eliminar la arena: Arena " + id + " inexistente"));
+        Arena arena = arenaRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("No se ha podido eliminar la arena: Arena " + id + " inexistente"));
             
-            arenaRepository.delete(arena);
-            return "Arena " + id + " eliminada exitosamente";
-
-        } catch (RuntimeException e) {
-            return e.getMessage();
-        }
+        arenaRepository.delete(arena);
+        return "Arena " + id + " eliminada exitosamente";
     }
 
     public Float obtenerMultiplicadorDeVelocidad(Integer id) {
