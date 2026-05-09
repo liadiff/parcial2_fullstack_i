@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.parcial2.parcial2.dto.ArmaDTO;
 import com.parcial2.parcial2.model.Arma;
 import com.parcial2.parcial2.repository.ArmaRepository;
 
@@ -68,6 +69,18 @@ public class ArmaService {
     public List<Arma> mostrarTodas(){
         List<Arma> listaDeArmas = armaRepository.findAll();
         return listaDeArmas;
+    }
+
+     //Convertir a DTO
+
+    public ArmaDTO convertirADTO (Arma arma){
+        ArmaDTO nuevaArmaDTO = new ArmaDTO();
+        nuevaArmaDTO.setDaño(arma.getDaño());
+        nuevaArmaDTO.setId(arma.getId());
+        nuevaArmaDTO.setNombre(arma.getNombre());
+        nuevaArmaDTO.setTipoArmaNombre(arma.getTipoArma().getNombre());
+        nuevaArmaDTO.setVelocidadArma(arma.getVelocidadArma());
+        return nuevaArmaDTO;
     }
  
 

@@ -19,7 +19,7 @@ public class ArmaController {
     private ArmaService armaService;
     //Agregar
 
-    @PostMapping("")
+    @PostMapping("/agregarArma")
     public ResponseEntity<?> agregarArma(@RequestBody Arma arma) {
         try {
             Arma guardado = armaService.agregarArma(arma);

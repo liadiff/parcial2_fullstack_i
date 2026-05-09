@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.parcial2.parcial2.dto.TipoArmaDTO;
 import com.parcial2.parcial2.model.TipoArma;
 import com.parcial2.parcial2.repository.TipoArmaRepository;
 
@@ -52,5 +53,16 @@ public class TipoArmaService {
     public List<TipoArma> listaTipoArma(){
         List<TipoArma> listaTipoArma = tipoArmaRepository.findAll();
         return listaTipoArma;
+    }
+
+    //Convertir a DTO
+
+    public TipoArmaDTO covertirTipoArmaDTO(TipoArma tipoArma){
+        TipoArmaDTO nuevoTipoArma = new TipoArmaDTO();
+        nuevoTipoArma.setId(tipoArma.getId());
+        nuevoTipoArma.setNombre(tipoArma.getNombre());
+        nuevoTipoArma.setCategoriaNombre(tipoArma.getCategoriaArma().getNombre());
+        return nuevoTipoArma;
+
     }
 }
