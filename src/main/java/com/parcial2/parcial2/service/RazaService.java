@@ -43,11 +43,12 @@ public class RazaService {
         return convertirADTO(razaActualizada);
     }
 
-    public void eliminar(Integer id) {
-        if (!razaRepository.existsById(id)) {
-            throw new RuntimeException("Error: No existe la raza con ID " + id);
-        }
-        razaRepository.deleteById(id);
+    public String eliminar(Integer id) {
+        Raza raza = razaRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("No se ha podido eliminar la raza: Raza " + id + " inexistente"));
+        
+        razaRepository.delete(raza);
+        return "Raza " + id + " eliminada exitosamente";
     }
 
     private RazaDTO convertirADTO(Raza raza) {
