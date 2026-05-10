@@ -7,4 +7,5 @@ import com.parcial2.parcial2.model.TipoArma;
 @Repository
 public interface TipoArmaRepository extends JpaRepository <TipoArma, Integer>{
 
+    Boolean existsByNombre (String nombre);
 }
