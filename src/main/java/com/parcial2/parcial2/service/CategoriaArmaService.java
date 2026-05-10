@@ -1,5 +1,6 @@
 package com.parcial2.parcial2.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,14 +52,18 @@ public class CategoriaArmaService {
     }
     //Mostrar todos
 
-    public List<CategoriaArma> mostrarTodos(){
+    public List<CategoriaArmaDTO> mostrarTodos(){
         List<CategoriaArma> listaCategorias = categoriaArmaRepository.findAll();
-        return listaCategorias;
+        List<CategoriaArmaDTO> listaCategoriasDTO = new ArrayList<>();
+        for(CategoriaArma categoriaArma : listaCategorias){
+            listaCategoriasDTO.add(convertirCategoriaArmaDTO(categoriaArma));
+        }
+        return listaCategoriasDTO;
     }
 
     //Convertir a DTO
 
-    public CategoriaArmaDTO covertirCategoriaArmaDTO (CategoriaArma categoriaArma){
+    public CategoriaArmaDTO convertirCategoriaArmaDTO (CategoriaArma categoriaArma){
         CategoriaArmaDTO nuevaCategoria = new CategoriaArmaDTO();
         nuevaCategoria.setId(categoriaArma.getId());
         nuevaCategoria.setNombre(categoriaArma.getNombre());
