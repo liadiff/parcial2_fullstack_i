@@ -25,20 +25,20 @@ public class Entidad {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "entidad_id")
     private Integer id;
 
     @NotBlank(message = "El nombre del jugador no puede estar vacio!!")
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
 
-    @NotNull(message = "El nivel del jugador debe ser minimo 1 ")
-    @Column(name = "nivel", nullable = false)
-
+    @NotNull(message = "El jugador debe ser npc o jugador")
+    @Column(name = "jugable", nullable = false)
     private Boolean jugable; //True = jugador - False = npc
     
     //FK
     @ManyToOne
-    @JoinColumn (name = "tipo_arma_id")
+    @JoinColumn (name = "arma_id")
     private Arma arma;
     //FK
     @ManyToOne

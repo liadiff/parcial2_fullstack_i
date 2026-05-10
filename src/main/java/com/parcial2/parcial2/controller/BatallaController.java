@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.parcial2.parcial2.dto.BatallaDTO;
-import com.parcial2.parcial2.model.Batalla;
 import com.parcial2.parcial2.model.Arena;
+import com.parcial2.parcial2.model.Batalla;
 import com.parcial2.parcial2.service.BatallaService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/v1/partidas")
+@RequestMapping("/api/v1/batallas")
 public class BatallaController {
     
     @Autowired

@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "raza")
+@Table(name = "razas")
 public class Raza {
     
     @Id

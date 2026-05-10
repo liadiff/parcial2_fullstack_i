@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Arenas")
+@Table(name = "arenas")
 public class Arena {
 
     @Id
@@ -37,13 +37,13 @@ public class Arena {
     @NotNull(message = "El multiplicador de daño no puede estar vacio!")
     @Min(value = 0, message = "El valor minimo para el multiplicador de velocidad es 0")
     @Max(value = 5, message = "El valor maximo para el multiplicador de velocidad es 5")
-    @Column(nullable = false)
+    @Column(name = "multiplicador_velocidad", nullable = false)
     private Float multiplicadorDeVelocidad;
 
     @NotNull(message = "El multiplicador de HP no puede estar vacio!")
     @Min(value = 0, message = "El valor minimo para el multiplicador de HP es 0")
     @Max(value = 5, message = "El valor maximo para el multiplicador de HP es 5")
-    @Column(nullable = false)
+    @Column(name = "multplicador_hp",nullable = false)
     private Float multiplicadorDeHP;
 
 }

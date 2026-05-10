@@ -1,5 +1,7 @@
 package com.parcial2.parcial2.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -19,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Batallas")
+@Table(name = "batallas")
 public class Batalla {
 
     @Id
@@ -34,4 +37,7 @@ public class Batalla {
     @ManyToOne
     @JoinColumn(name = "arena_id", nullable = false)
     private Arena arena;
+
+    @OneToMany(mappedBy = "batalla") // "batalla" es el nombre del atributo en la clase Partida
+    private List<Partida> partidas;
 }

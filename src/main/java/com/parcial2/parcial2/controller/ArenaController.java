@@ -1,25 +1,24 @@
 package com.parcial2.parcial2.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import com.parcial2.parcial2.service.ArenaService;
-
-import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.parcial2.parcial2.dto.ArenaDTO;
 import com.parcial2.parcial2.model.Arena;
+import com.parcial2.parcial2.service.ArenaService;
 
-import java.util.List;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/arenas")
@@ -28,7 +27,7 @@ public class ArenaController {
     @Autowired
     private ArenaService arenaService;
     
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<?> listarArenas() {
         List<ArenaDTO> arenas = arenaService.listarArenas();
 
@@ -94,7 +93,7 @@ public class ArenaController {
         }
     }
 
-    @GetMapping("/{id}/multiplicadorvelocidad") 
+    @GetMapping("/{id}/multiplicadorHp") 
     public ResponseEntity<?> obtenerMultiplicadorHP(@PathVariable Integer id) {
         try {
             Float multiplicadorHP = arenaService.obtenerMultiplicadorDeHP(id);

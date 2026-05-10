@@ -8,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Partidas")
+@Table(name = "partidas")
 public class Partida {
     
     @Id
@@ -36,7 +35,7 @@ public class Partida {
     @JoinColumn(name = "batalla_id")
     private Batalla batalla;
 
-    @OneToOne
-    @JoinColumn(name = "batalla_id")
+    @ManyToOne
+    @JoinColumn(name = "enemigo_id")
     private Entidad enemigo;
 }
