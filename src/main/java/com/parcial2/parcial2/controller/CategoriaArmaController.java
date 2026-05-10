@@ -53,7 +53,7 @@ public class CategoriaArmaController {
     public ResponseEntity<?> modificarCategoriaArma(@PathVariable Integer id, @RequestBody CategoriaArma categoriaArma) {
         try {
             CategoriaArma actualizada = categoriaArmaService.modificarCategoria(id, categoriaArma);
-            return ResponseEntity.ok(categoriaArmaService.covertirCategoriaArmaDTO(actualizada));
+            return ResponseEntity.ok(categoriaArmaService.convertirCategoriaArmaDTO(actualizada));
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
@@ -64,7 +64,7 @@ public class CategoriaArmaController {
     public ResponseEntity<?> buscarCategoriaArma(@PathVariable Integer id) {
         try {
             CategoriaArma categoriaArma = categoriaArmaService.encontrarCategoria(id);
-            CategoriaArmaDTO categoriaArmaDTO = categoriaArmaService.covertirCategoriaArmaDTO(categoriaArma);
+            CategoriaArmaDTO categoriaArmaDTO = categoriaArmaService.convertirCategoriaArmaDTO(categoriaArma);
             return ResponseEntity.ok(categoriaArmaDTO);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
