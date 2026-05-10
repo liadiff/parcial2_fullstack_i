@@ -19,7 +19,7 @@ public class RazaController {
     @Autowired
     private RazaService razaService;
 
-    @GetMapping("mostrarRazas")
+    @GetMapping("/mostrarRazas")
     public ResponseEntity<?> listarRazas() { 
         List<RazaDTO> razas = razaService.listarTodos();
         

@@ -54,7 +54,7 @@ public class RazaService {
     private RazaDTO convertirADTO(Raza raza) {
         RazaDTO dto = new RazaDTO();
         
-        // Mapeo directo según tu RazaDTO
+        dto.setId(raza.getId());
         dto.setNombre(raza.getNombre());
         dto.setDescripcion(raza.getDescripcion());
         
