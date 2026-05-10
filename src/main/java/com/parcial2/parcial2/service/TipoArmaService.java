@@ -1,5 +1,6 @@
 package com.parcial2.parcial2.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,30 +35,36 @@ public class TipoArmaService {
     }
     //Modificar
 
-    public TipoArma modificarTipoArma(Integer id, TipoArma nuevoTipoArma){
+    public TipoArmaDTO modificarTipoArma(Integer id, TipoArma nuevoTipoArma){
         TipoArma tipoArmaEncontrada = tipoArmaRepository.findById(id).orElseThrow(() -> new RuntimeException("El tipo de arma con ID " + id + " no existe"));
         tipoArmaEncontrada.setCategoriaArma(nuevoTipoArma.getCategoriaArma());
         tipoArmaEncontrada.setNombre(nuevoTipoArma.getNombre());
         tipoArmaRepository.save(tipoArmaEncontrada);
-        return tipoArmaEncontrada;
+        return convertirTipoArmaDTO(tipoArmaEncontrada);
     }
 
     //Buscar
 
-    public TipoArma buscarTipoArma(Integer id){
+    public TipoArmaDTO buscarTipoArma(Integer id){
         TipoArma tipoArmaEncontrada = tipoArmaRepository.findById(id).orElseThrow(() -> new RuntimeException("El tipo de arma con ID " + id + " no existe"));
-        return tipoArmaEncontrada;
+        return convertirTipoArmaDTO(tipoArmaEncontrada);
     }
     //Mostrar todos
 
-    public List<TipoArma> listaTipoArma(){
+    public List<TipoArmaDTO> listaTipoArma(){
         List<TipoArma> listaTipoArma = tipoArmaRepository.findAll();
-        return listaTipoArma;
+        
+        List<TipoArmaDTO> listaTipoArmaDTO = new ArrayList<>();
+        
+        for(TipoArma arma : listaTipoArma){
+            listaTipoArmaDTO.add(convertirTipoArmaDTO(arma));
+        }
+        return listaTipoArmaDTO;
     }
 
     //Convertir a DTO
 
-    public TipoArmaDTO covertirTipoArmaDTO(TipoArma tipoArma){
+    public TipoArmaDTO convertirTipoArmaDTO(TipoArma tipoArma){
         TipoArmaDTO nuevoTipoArma = new TipoArmaDTO();
         nuevoTipoArma.setId(tipoArma.getId());
         nuevoTipoArma.setNombre(tipoArma.getNombre());

@@ -1,5 +1,6 @@
 package com.parcial2.parcial2.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,15 +61,21 @@ public class ArmaService {
 
     //Buscar
 
-    public Arma encontrarArma (Integer id){
+    public ArmaDTO encontrarArma (Integer id){
         Arma armaEncontrada = armaRepository.findById(id).orElseThrow(() -> new RuntimeException("El arma con ID " + id + " no existe"));
-        return armaEncontrada;
+        return convertirADTO(armaEncontrada);
     }
     //Mostrar todos
 
-    public List<Arma> mostrarTodas(){
+    public List<ArmaDTO> mostrarTodas(){
         List<Arma> listaDeArmas = armaRepository.findAll();
-        return listaDeArmas;
+
+        List<ArmaDTO> listaDeArmasDTO = new ArrayList<>();
+
+        for(Arma arma : listaDeArmas){
+            listaDeArmasDTO.add(convertirADTO(arma));
+        }
+        return listaDeArmasDTO;
     }
 
      //Convertir a DTO
