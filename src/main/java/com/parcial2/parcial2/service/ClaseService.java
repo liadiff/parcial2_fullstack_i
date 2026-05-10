@@ -43,19 +43,20 @@ public class ClaseService {
         return convertirADTO(claseActualizada);
     }
 
-    public void eliminar(Integer id) {
-        if (!claseRepository.existsById(id)) {
-            throw new RuntimeException("Error: No existe la clase con ID " + id);
-        }
-        claseRepository.deleteById(id);
+    public String eliminar(Integer id) {
+        Clase clase = claseRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("No se ha podido eliminar la Clase: Clase " + id + " inexistente"));
+
+        claseRepository.delete(clase);
+        return "Clase " + id + " eliminada exitosamente";
     }
 
     private ClaseDTO convertirADTO(Clase clase) {
         ClaseDTO dto = new ClaseDTO();
+        dto.setId(clase.getId());
         dto.setNombre(clase.getNombre());
         dto.setDescripcion(clase.getDescripcion());
         dto.setMultDano(clase.getMult_dano()); 
-        
         return dto;
     }
 }

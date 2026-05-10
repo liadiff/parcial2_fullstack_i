@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class ArmaduraDTO {
+    private Integer id;
     private String nombre;
     private Float puntosVida;
     private Float proteccion;
