@@ -29,7 +29,7 @@ public class ArmaduraService {
 
     public ArmaduraDTO obtenerPorId(Integer id) {
         Armadura armadura = armaduraRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Armadura no encontrada"));
+        .orElseThrow(() -> new RuntimeException("Armadura no encontrada"));
         return convertirADTO(armadura);
     }
 
@@ -43,19 +43,20 @@ public class ArmaduraService {
         return convertirADTO(armaduraActualizada);
     }
 
-    public void eliminar(Integer id) {
-        if (!armaduraRepository.existsById(id)) {
-            throw new RuntimeException("Error: No existe la armadura con ID " + id);
-        }
-        armaduraRepository.deleteById(id);
+    public String eliminar(Integer id) {
+        Armadura armadura = armaduraRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("No se ha podido eliminar la arena: Arena " + id + " inexistente"));
+            
+        armaduraRepository.delete(armadura);
+        return "Armadura " + id + " eliminada exitosamente";
     }
 
     private ArmaduraDTO convertirADTO(Armadura armadura) {
         ArmaduraDTO dto = new ArmaduraDTO();
         
-        // Mapeo exacto según tu modelo Armadura.java y ArmaduraDTO.java
+        dto.setId(armadura.getId());
         dto.setNombre(armadura.getNombre());
-        dto.setPuntosVida(armadura.getHp()); // Mapeamos 'hp' de la entidad a 'puntosVida' del DTO
+        dto.setPuntosVida(armadura.getHp());
         dto.setProteccion(armadura.getProteccion());
         
         return dto;
