@@ -21,14 +21,6 @@ public class ArmaService {
     @Autowired
     private ArmaRepository armaRepository;
 
-    /*
-    @Autowired
-    private CategoriaArmaRepository categoriaArmaRepository;
-
-    @Autowired
-    private TipoArmaRepository tipoArmaRepository;
-    */
-
     //Agregar
     
     public Arma agregarArma(Arma arma){
@@ -89,20 +81,4 @@ public class ArmaService {
         nuevaArmaDTO.setVelocidadArma(arma.getVelocidadArma());
         return nuevaArmaDTO;
     }
- 
-
-    //Verificaciones
-
-    //Asignar arma
-    /*
-    Aca debería ir el asignar arma. Lo vamos a usar para asiganr y eliminar
-    */
-
-    /* 
-    No se me ocurre que 
-    */
-
-    
-
-    
 }

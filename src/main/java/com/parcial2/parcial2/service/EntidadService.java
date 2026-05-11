@@ -87,6 +87,7 @@ public class EntidadService {
     //Convertir DTO
     public EntidadDTO convertirEntidadADTO(Entidad entidad) {
         EntidadDTO entidadDTO = new EntidadDTO();
+        entidadDTO.setId(entidad.getId());
         entidadDTO.setNombre(entidad.getNombre());
         entidadDTO.setArma(entidad.getArma().getNombre());
         entidadDTO.setArmadura(entidad.getArmadura().getNombre());
@@ -99,28 +100,4 @@ public class EntidadService {
         }
         return entidadDTO;
     }
-    /*
-    //----------------------USO INTERNO--------------------------------//
-    //Mostrar entidades jugables
-    public List<Entidad> EntidadesJugables() {
-        List<Entidad> listaEntidades = entidadRepository.findAll();
-        List<Entidad> listaEntidadesJugables = new ArrayList<>();
-        for (Entidad entidad : listaEntidades) {
-            if (entidad.getJugable()) {
-                listaEntidadesJugables.add(entidad);
-            }
-        }
-        return listaEntidadesJugables;
-    }
-    public List<Entidad> EntidadesNoJugables() {
-        List<Entidad> listaEntidades = entidadRepository.findAll();
-        List<Entidad> listaEntidadesNoJugables = new ArrayList<>();
-        for (Entidad entidad : listaEntidades) {
-            if (!entidad.getJugable()) {
-                listaEntidadesNoJugables.add(entidad);
-            }
-        }
-        return listaEntidadesNoJugables;
-    }
-     */
 }

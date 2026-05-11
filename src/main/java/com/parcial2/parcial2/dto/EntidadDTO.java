@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class EntidadDTO {
+    private Integer id;
     private String nombre;
     private String jugable;
     private String arma;

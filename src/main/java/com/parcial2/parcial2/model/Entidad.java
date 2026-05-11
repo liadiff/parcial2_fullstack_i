@@ -52,8 +52,4 @@ public class Entidad {
     @ManyToOne
     @JoinColumn (name = "armadura_id")
     private Armadura armadura;
-
-    //Unir entidad partidad
-
-    
 }
